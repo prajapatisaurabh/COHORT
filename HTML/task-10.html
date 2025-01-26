@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data</title>
+  </head>
+  <body>
+    <h1>TASK 10</h1>
+
+    <p
+      id="pid"
+      class="pclass"
+      style="text-align: center; font-weight: bold"
+      data-info="custom data"
+    >
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis pariatur
+      vel molestias impedit excepturi ratione fugit odio molestiae dolor minus
+      harum tempore voluptatum debitis nisi commodi maiores, facere corrupti
+      eligendi.
+    </p>
+
+    <a
+      href="www.google.com"
+      target="_blank"
+      title="GoogleG"
+      data-link="googlegoggle"
+      =""
+    >
+      Google
+    </a>
+  </body>
+  <script>
+    // Accessing data-* attributes using JavaScript
+    const pElement = document.getElementById("pid");
+    console.log(pElement.dataset.info); // Output: custom data
+
+    const aElement = document.querySelector("a");
+    console.log(aElement.dataset.link); // Output: googlegoggle
+  </script>
+</html>
