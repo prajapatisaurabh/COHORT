@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        display: flex;
+        background-color: aqua;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 80px;
+      }
+
+      .nav-links ul {
+        display: flex;
+        list-style: none;
+        list-style-type: none;
+        gap: 20px;
+      }
+
+      .nav-links ul li {
+        cursor: pointer;
+      }
+
+      .auth button {
+        padding: 10px 20px;
+        border: none;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+      .auth button:hover {
+        background-color: darkblue;
+      }
+
+      .hero {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: aqua;
+        padding: 20px 80px;
+      }
+
+      .hero div {
+        width: 50%;
+      }
+
+      .hero div h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero div p {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero div button {
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .hero div button:hover {
+        background-color: darkblue;
+        color: white;
+      }
+
+      .hero div img {
+        width: 100%;
+        object-fit: cover;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero div img:hover {
+        /* transform: scale(1.1); */
+        rotate: 10deg;
+      }
+
+      .logo-text {
+        text-align: center;
+        font-size: 2rem;
+        margin: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid black;
+        padding: 20px 80px;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 20px;
+      }
+
+      .three-card {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 20px 80px;
+        border: 2px solid black;
+      }
+
+      .three-card div img {
+        width: 90%;
+        object-fit: cover;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+      }
+
+      .card {
+        border: 2px solid black;
+        width: 20%;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .card h3 {
+        margin: 20px 0;
+      }
+
+      .card p {
+        margin: 20px 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        .nav-links ul {
+          display: none;
+        }
+        .auth button {
+          display: none;
+        }
+        .hero {
+          flex-direction: column;
+        }
+        .hero div {
+          width: 100%;
+          text-align: center;
+        }
+        .hero div img {
+          width: 80%;
+        }
+        .logo {
+          flex-direction: column;
+        }
+        .logo img {
+          width: 50%;
+          height: 50%;
+        }
+        .three-card {
+          flex-direction: column;
+        }
+        .card {
+          width: 80%;
+          margin: 20px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav Section Start-->
+    <nav>
+      <div>
+        <p>MyLogo</p>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Services</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div class="auth">
+        <button>Sign In</button>
+        <button>Sign Up</button>
+      </div>
+    </nav>
+    <!-- Nav Section End -->
+
+    <!-- Hero Section Start -->
+    <section class="hero">
+      <div>
+        <h1>Hero Title</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, iste
+          ullam sunt quo a tempore id dolores nisi totam temporibus, minus cum
+          officiis aspernatur voluptate accusantium reiciendis. Rem, suscipit
+          ab!
+        </p>
+        <button>SignUp</button>
+      </div>
+      <div>
+        <img
+          src="https://www.w3schools.com/css/grid_lines.png"
+          alt="GRID image"
+        />
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Client Section Start -->
+    <section>
+      <h2 class="logo-text">Our Clients</h2>
+      <div class="logo">
+        <img
+          src="https://static.startuptalky.com/2021/11/tips-for-understanding-clients-StartupTalky-1.png"
+          alt="Client1"
+        />
+        <img
+          src="https://www.realtimeinfotechservices.in/assets/img/clients.png"
+          alt="Client1"
+        />
+        <img
+          src="https://devraulic.com/wp-content/uploads/2024/06/Understanding-Your-Clients-Needs-1080x675.webp"
+          alt="Client1"
+        />
+        <img
+          src="https://www.realtimeinfotechservices.in/assets/img/clients.png"
+          alt="Client1"
+        />
+        <img
+          src="https://devraulic.com/wp-content/uploads/2024/06/Understanding-Your-Clients-Needs-1080x675.webp"
+          alt="Client1"
+        />
+      </div>
+    </section>
+    <!-- Client Section End -->
+
+    <!-- Three Card Section Start -->
+    <section class="three-card">
+      <div class="card">
+        <img
+          src="https://yt3.googleusercontent.com/QHbBaeC1MeAM8flc-N4cZXt9FtQBWN94ryZ9VXezIEWgUUIS9_vlPxnbmCc0oRXelFKv77Il=s900-c-k-c0x00ffffff-no-rj"
+          alt="image"
+        />
+        <h3>Card Title</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+          eveniet atque sequi sunt dolor, veniam nulla ipsam nemo odio vel.
+        </p>
+      </div>
+      <div class="card">
+        <img
+          src="https://yt3.googleusercontent.com/QHbBaeC1MeAM8flc-N4cZXt9FtQBWN94ryZ9VXezIEWgUUIS9_vlPxnbmCc0oRXelFKv77Il=s900-c-k-c0x00ffffff-no-rj"
+          alt="image"
+        />
+        <h3>Card Title</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+          eveniet atque sequi sunt dolor, veniam nulla ipsam nemo odio vel.
+        </p>
+      </div>
+      <div class="card">
+        <img
+          src="https://yt3.googleusercontent.com/QHbBaeC1MeAM8flc-N4cZXt9FtQBWN94ryZ9VXezIEWgUUIS9_vlPxnbmCc0oRXelFKv77Il=s900-c-k-c0x00ffffff-no-rj"
+          alt="image"
+        />
+        <h3>Card Title</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+          eveniet atque sequi sunt dolor, veniam nulla ipsam nemo odio vel.
+        </p>
+      </div>
+    </section>
+    <!-- Three Card Section End -->
+  </body>
+</html>
