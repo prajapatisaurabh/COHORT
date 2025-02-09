@@ -1,32 +1,12 @@
-const p1 = {
-  fname: "Hitesh",
-  lname: "Suarbh",
-  address: {
-    h: 1,
-    s: 1,
-  },
-};
+let arr = [1, 2, 4, 5, 6, 7, 0];
 
-const p1KaString = JSON.stringify(p1);
-console.log(p1KaString);
+console.log(arr.every((item) => item < 1));
 
-const p2 = JSON.parse(p1KaString);
+console.log(arr);
 
-p2.fname = "Name";
-p2.lname = "no name";
+const arr1 = [0, 1, 2, [3, 4, [5]]];
+console.log(arr1.flat(2));
 
-const p3 = {
-  fname: p1.fname,
-  lname: p1.lname,
-  address: p1.address,
-};
+const mArr1 = [1, 2, 1];
 
-p3.address.h = "1000";
-
-console.log(p1);
-console.log(p2);
-console.log(p3);
-
-// above concept called Shallow copy (...)
-
-// how we can do deepcoy
+console.log(mArr1.flatMap((num) => (num == 1 ? [2, 2] : 1)));
