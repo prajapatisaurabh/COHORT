@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* FAQ Page Styles */
+      /* FAQ Header */
+      .faq-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://via.placeholder.com/1500");
+        background-size: cover;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .faq-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* FAQ Container */
+      .faq-container {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-category {
+        margin-bottom: 3rem;
+      }
+
+      .faq-category h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* FAQ Items */
+      .faq-item {
+        margin-bottom: 1rem;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 1.5rem;
+        text-align: left;
+        background: #f9f9f9;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+        transition: background 0.3s ease;
+      }
+
+      .faq-question:hover {
+        background: #f1f1f1;
+      }
+
+      .faq-question i {
+        transition: transform 0.3s ease;
+      }
+
+      .faq-question .rotate {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      }
+
+      .faq-answer.active {
+        padding: 1.5rem;
+        background: #fff;
+      }
+
+      .faq-answer p {
+        line-height: 1.6;
+        color: #555;
+      }
+
+      /* FAQ CTA */
+      .faq-cta {
+        text-align: center;
+        padding: 3rem 0;
+        margin-top: 2rem;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .faq-cta h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- FAQ Header -->
+    <header class="faq-header">
+      <div class="header-content">
+        <h1>Frequently Asked Questions</h1>
+        <p>
+          Quick answers to common questions about our calculators and services.
+        </p>
+      </div>
+    </header>
+
+    <!-- FAQ Categories -->
+    <section class="faq-container">
+      <!-- General Questions -->
+      <div class="faq-category">
+        <h2><i class="fas fa-question-circle"></i> General Questions</h2>
+        <div class="faq-item">
+          <button class="faq-question">
+            What is Online Calculator Hub?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              A free platform offering specialized calculators for finance,
+              math, health, and more. No signup required!
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is this service really free?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes! All calculators are completely free to use with no hidden
+              fees.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Using Calculators -->
+      <div class="faq-category">
+        <h2><i class="fas fa-calculator"></i> Using Calculators</h2>
+        <div class="faq-item">
+          <button class="faq-question">
+            How do I save my calculations?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Use the "Print/Save" button available in each calculator to export
+              results as PDF.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Can I customize calculations?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Most calculators allow custom inputs. Look for the "Advanced
+              Settings" option.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Support -->
+      <div class="faq-category">
+        <h2><i class="fas fa-tools"></i> Technical Support</h2>
+        <div class="faq-item">
+          <button class="faq-question">
+            Why isn't my calculator working?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              1. Clear your browser cache<br />2. Disable browser extensions<br />3.
+              Try a different browser
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="faq-cta">
+        <h3>Still Have Questions?</h3>
+        <p>Contact our support team for personalized assistance.</p>
+        <a href="contact.html" class="cta-button">Contact Support</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const answer = button.nextElementSibling;
+          const icon = button.querySelector("i");
+
+          answer.classList.toggle("active");
+          icon.classList.toggle("rotate");
+
+          if (answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMI Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* EMI Calculator Specific Styles */
+      .calculator-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://via.placeholder.com/1500");
+        background-size: cover;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      .formula sup {
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- EMI Calculator Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>EMI Calculator</h1>
+        <p>
+          Calculate Equated Monthly Installments for loans and credit
+          facilities.
+        </p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Loan Details</h2>
+        <form id="emiForm">
+          <div class="form-group">
+            <label for="principal">Loan Amount ($)</label>
+            <input
+              type="number"
+              id="principal"
+              placeholder="e.g., 5000"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="interestRate">Annual Interest Rate (%)</label>
+            <input
+              type="number"
+              id="interestRate"
+              placeholder="e.g., 9.5"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tenure">Loan Tenure (Months)</label>
+            <input type="number" id="tenure" placeholder="e.g., 24" required />
+          </div>
+          <button type="submit" class="calculate-button">Calculate EMI</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Payment Breakdown</h2>
+        <div class="results">
+          <p><strong>Monthly EMI:</strong> <span id="emiAmount">-</span></p>
+          <p>
+            <strong>Total Interest:</strong> <span id="totalInterest">-</span>
+          </p>
+          <p>
+            <strong>Total Payment:</strong> <span id="totalPayment">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>EMI Calculation Formula</h2>
+      <div class="formula-content">
+        <p>EMI is calculated using the standard amortization formula:</p>
+        <div class="formula">
+          EMI = [P × r × (1 + r)<sup>n</sup>] / [(1 + r)<sup>n</sup> - 1]
+        </div>
+        <p>Where:</p>
+        <ul>
+          <li><strong>P</strong> = Principal loan amount</li>
+          <li>
+            <strong>r</strong> = Monthly interest rate (Annual Rate ÷ 12 ÷ 100)
+          </li>
+          <li><strong>n</strong> = Loan tenure in months</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for EMI Calculator -->
+    <script>
+      document
+        .getElementById("emiForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input values
+          const principal = parseFloat(
+            document.getElementById("principal").value
+          );
+          const interestRate = parseFloat(
+            document.getElementById("interestRate").value
+          );
+          const tenure = parseFloat(document.getElementById("tenure").value);
+
+          // Validate inputs
+          if (isNaN(principal)) {
+            alert("Please enter a valid loan amount");
+            return;
+          }
+          if (isNaN(interestRate)) {
+            alert("Please enter a valid interest rate");
+            return;
+          }
+          if (isNaN(tenure) || tenure < 1) {
+            alert("Please enter valid tenure (minimum 1 month)");
+            return;
+          }
+
+          // Calculate EMI
+          const monthlyInterestRate = interestRate / 100 / 12;
+          const emi =
+            (principal *
+              monthlyInterestRate *
+              Math.pow(1 + monthlyInterestRate, tenure)) /
+            (Math.pow(1 + monthlyInterestRate, tenure) - 1);
+
+          const totalPayment = emi * tenure;
+          const totalInterest = totalPayment - principal;
+
+          // Display results
+          document.getElementById("emiAmount").textContent = `$${emi.toFixed(
+            2
+          )}`;
+          document.getElementById(
+            "totalInterest"
+          ).textContent = `$${totalInterest.toFixed(2)}`;
+          document.getElementById(
+            "totalPayment"
+          ).textContent = `$${totalPayment.toFixed(2)}`;
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortgage Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+        text-align: center;
+      }
+
+      /* Header Styles */
+      .calculator-header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px 10px;
+      }
+
+      .header-content h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .header-content p {
+        margin-top: 5px;
+        font-size: 16px;
+      }
+
+      /* Calculator Container */
+      .calculator-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 500px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Form Styles */
+      .calculator-form {
+        width: 100%;
+        text-align: left;
+      }
+
+      .calculator-form h2 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .calculate-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+      }
+
+      .calculate-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Results Section */
+      .calculator-results {
+        width: 100%;
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .results p {
+        font-size: 16px;
+        padding: 8px;
+        background: #f8f8f8;
+        border-radius: 4px;
+        margin-bottom: 8px;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      .formula sup {
+        font-size: 0.8em;
+        vertical-align: super;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Mortgage Calculator Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>Mortgage Calculator</h1>
+        <p>
+          Estimate your monthly mortgage payments and understand your home loan
+          breakdown.
+        </p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Enter Mortgage Details</h2>
+        <form id="mortgageForm">
+          <div class="form-group">
+            <label for="homePrice">Home Price ($)</label>
+            <input
+              type="number"
+              id="homePrice"
+              placeholder="e.g., 500000"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="downPayment">Down Payment ($)</label>
+            <input type="number" id="downPayment" placeholder="e.g., 100000" />
+          </div>
+          <div class="form-group">
+            <label for="interestRate">Interest Rate (%)</label>
+            <input
+              type="number"
+              id="interestRate"
+              placeholder="e.g., 3.5"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="loanTerm">Loan Term (Years)</label>
+            <input
+              type="number"
+              id="loanTerm"
+              placeholder="e.g., 30"
+              required
+            />
+          </div>
+          <button type="submit" class="calculate-button">Calculate</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Mortgage Breakdown</h2>
+        <div class="results">
+          <p>
+            <strong>Loan Principal:</strong> <span id="loanPrincipal">-</span>
+          </p>
+          <p>
+            <strong>Monthly Payment:</strong> <span id="monthlyPayment">-</span>
+          </p>
+          <p>
+            <strong>Total Interest Paid:</strong>
+            <span id="totalInterest">-</span>
+          </p>
+          <p>
+            <strong>Total Payment:</strong> <span id="totalPayment">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>How It Works</h2>
+      <div class="formula-content">
+        <p>
+          The mortgage payment is calculated using the
+          <strong>amortization formula</strong>:
+        </p>
+        <div class="formula">
+          M = P [ i(1 + i)<sup>n</sup> ] / [ (1 + i)<sup>n</sup> - 1 ]
+        </div>
+        <p>Where:</p>
+        <ul>
+          <li><strong>M</strong> = Monthly payment</li>
+          <li>
+            <strong>P</strong> = Loan principal (Home Price - Down Payment)
+          </li>
+          <li><strong>i</strong> = Monthly interest rate (Annual Rate ÷ 12)</li>
+          <li>
+            <strong>n</strong> = Total number of payments (Loan Term × 12)
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Mortgage Calculator -->
+    <script>
+      document
+        .getElementById("mortgageForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input values
+          const homePrice = parseFloat(
+            document.getElementById("homePrice").value
+          );
+          const downPayment =
+            parseFloat(document.getElementById("downPayment").value) || 0;
+          const interestRate = parseFloat(
+            document.getElementById("interestRate").value
+          );
+          const loanTerm = parseFloat(
+            document.getElementById("loanTerm").value
+          );
+
+          // Validate inputs
+          if (isNaN(homePrice)) {
+            alert("Please enter a valid home price.");
+            return;
+          }
+          if (downPayment > homePrice) {
+            alert("Down payment cannot exceed home price.");
+            return;
+          }
+          if (isNaN(interestRate)) {
+            alert("Please enter a valid interest rate.");
+            return;
+          }
+          if (isNaN(loanTerm)) {
+            alert("Please enter a valid loan term.");
+            return;
+          }
+
+          // Calculate values
+          const principal = homePrice - downPayment;
+          const monthlyInterestRate = interestRate / 100 / 12;
+          const numberOfPayments = loanTerm * 12;
+
+          // Monthly Payment Calculation
+          const monthlyPayment =
+            (principal *
+              (monthlyInterestRate *
+                Math.pow(1 + monthlyInterestRate, numberOfPayments))) /
+            (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+
+          const totalPayment = monthlyPayment * numberOfPayments;
+          const totalInterest = totalPayment - principal;
+
+          // Display results
+          document.getElementById(
+            "loanPrincipal"
+          ).textContent = `$${principal.toFixed(2)}`;
+          document.getElementById(
+            "monthlyPayment"
+          ).textContent = `$${monthlyPayment.toFixed(2)}`;
+          document.getElementById(
+            "totalInterest"
+          ).textContent = `$${totalInterest.toFixed(2)}`;
+          document.getElementById(
+            "totalPayment"
+          ).textContent = `$${totalPayment.toFixed(2)}`;
+        });
+    </script>
+  </body>
+</html>

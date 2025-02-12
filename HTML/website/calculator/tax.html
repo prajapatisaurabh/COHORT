@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tax Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Tax Calculator Specific Styles */
+      .tax-brackets {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .tax-brackets h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      .tax-brackets ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .tax-brackets li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .tax-brackets li:last-child {
+        border-bottom: none;
+      }
+
+      /* Responsive Table */
+      @media (max-width: 768px) {
+        .calculator-container {
+          flex-direction: column;
+        }
+
+        .calculator-form,
+        .calculator-results {
+          width: 100%;
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Tax Calculator Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>Income Tax Calculator</h1>
+        <p>
+          Calculate your income tax liability based on progressive tax brackets.
+        </p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Tax Details</h2>
+        <form id="taxForm">
+          <div class="form-group">
+            <label for="income">Taxable Income ($)</label>
+            <input
+              type="number"
+              id="income"
+              placeholder="e.g., 75000"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="filingStatus">Filing Status</label>
+            <select id="filingStatus">
+              <option value="single">Single</option>
+              <option value="married">Married Filing Jointly</option>
+            </select>
+          </div>
+          <button type="submit" class="calculate-button">Calculate Tax</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Tax Breakdown</h2>
+        <div class="results">
+          <p><strong>Total Tax Owed:</strong> <span id="totalTax">-</span></p>
+          <p>
+            <strong>Effective Tax Rate:</strong>
+            <span id="effectiveRate">-</span>
+          </p>
+          <p><strong>After-Tax Income:</strong> <span id="afterTax">-</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>Tax Calculation Method</h2>
+      <div class="formula-content">
+        <p>Progressive tax calculation using marginal tax brackets:</p>
+        <div class="tax-brackets">
+          <h3>2023 Tax Brackets (Single Filer):</h3>
+          <ul>
+            <li>10% on income up to $11,000</li>
+            <li>12% on income $11,001 - $44,725</li>
+            <li>22% on income $44,726 - $95,375</li>
+            <li>24% on income $95,376 - $182,100</li>
+            <li>32% on income $182,101 - $231,250</li>
+            <li>35% on income $231,251 - $578,125</li>
+            <li>37% on income over $578,125</li>
+          </ul>
+        </div>
+        <p>Tax = Σ (Taxable income in bracket × Tax rate)</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Tax Calculator -->
+    <script>
+      document
+        .getElementById("taxForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const income = parseFloat(document.getElementById("income").value);
+          const filingStatus = document.getElementById("filingStatus").value;
+
+          // Tax brackets for 2023 (single filer example)
+          const brackets = [
+            { max: 11000, rate: 0.1 },
+            { max: 44725, rate: 0.12 },
+            { max: 95375, rate: 0.22 },
+            { max: 182100, rate: 0.24 },
+            { max: 231250, rate: 0.32 },
+            { max: 578125, rate: 0.35 },
+            { rate: 0.37 }, // No max for last bracket
+          ];
+
+          let remainingIncome = income;
+          let totalTax = 0;
+          let previousMax = 0;
+
+          for (const bracket of brackets) {
+            if (remainingIncome <= 0) break;
+
+            const bracketSize = bracket.max
+              ? Math.min(bracket.max - previousMax, remainingIncome)
+              : remainingIncome;
+
+            totalTax += bracketSize * bracket.rate;
+            remainingIncome -= bracketSize;
+            previousMax = bracket.max || 0;
+          }
+
+          const effectiveRate = (totalTax / income) * 100;
+          const afterTax = income - totalTax;
+
+          // Display results
+          document.getElementById(
+            "totalTax"
+          ).textContent = `$${totalTax.toFixed(2)}`;
+          document.getElementById(
+            "effectiveRate"
+          ).textContent = `${effectiveRate.toFixed(1)}%`;
+          document.getElementById(
+            "afterTax"
+          ).textContent = `$${afterTax.toFixed(2)}`;
+        });
+    </script>
+  </body>
+</html>
