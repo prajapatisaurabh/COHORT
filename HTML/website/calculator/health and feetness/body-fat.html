@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Body Fat Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Body Fat Calculator Container */
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator-form h2,
+      .calculator-results h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Form Group */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Calculate Button */
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      /* Results Section */
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem;
+        text-align: center;
+        background-color: #1a252f;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #1abc9c;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Body Fat Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Body Fat Calculator</h2>
+        <form id="bodyFatForm">
+          <div class="form-group">
+            <label for="weight">Weight (kg)</label>
+            <input
+              type="number"
+              id="weight"
+              placeholder="Enter weight in kilograms"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="height">Height (cm)</label>
+            <input
+              type="number"
+              id="height"
+              placeholder="Enter height in centimeters"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="neck">Neck Circumference (cm)</label>
+            <input
+              type="number"
+              id="neck"
+              placeholder="Enter neck circumference in centimeters"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="waist">Waist Circumference (cm)</label>
+            <input
+              type="number"
+              id="waist"
+              placeholder="Enter waist circumference in centimeters"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="hip" id="hipLabel"
+              >Hip Circumference (cm) <span>(For Women Only)</span></label
+            >
+            <input
+              type="number"
+              id="hip"
+              placeholder="Enter hip circumference in centimeters"
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <button type="submit" class="calculate-button">
+            Calculate Body Fat
+          </button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Results</h2>
+        <div class="results">
+          <p>
+            <strong>Body Fat Percentage:</strong>
+            <span id="bodyFatResult">-</span> %
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Body Fat Calculator -->
+    <script>
+      document
+        .getElementById("bodyFatForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input values
+          const weight = parseFloat(document.getElementById("weight").value);
+          const height = parseFloat(document.getElementById("height").value);
+          const neck = parseFloat(document.getElementById("neck").value);
+          const waist = parseFloat(document.getElementById("waist").value);
+          const hip = parseFloat(document.getElementById("hip").value);
+          const gender = document.getElementById("gender").value;
+
+          let bodyFat;
+
+          if (gender === "male") {
+            // Body Fat Formula for Men
+            bodyFat =
+              86.01 * Math.log10(waist - neck) -
+              70.041 * Math.log10(height) +
+              36.76;
+          } else {
+            // Body Fat Formula for Women
+            bodyFat =
+              163.205 * Math.log10(waist + hip - neck) -
+              97.684 * Math.log10(height) -
+              78.387;
+          }
+
+          // Display results
+          document.getElementById("bodyFatResult").textContent =
+            bodyFat.toFixed(2);
+        });
+    </script>
+  </body>
+</html>

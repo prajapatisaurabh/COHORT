@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Zone Converter - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Container for Converter */
+      .converter-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .converter-form,
+      .converter-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .converter-form h2,
+      .converter-results h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Form Group */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Convert Button */
+      .convert-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .convert-button:hover {
+        background-color: #16a085;
+      }
+
+      /* Results Section */
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem;
+        text-align: center;
+        background-color: #1a252f;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #1abc9c;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Time Zone Converter Container -->
+    <section class="converter-container">
+      <!-- Converter Form -->
+      <div class="converter-form">
+        <h2>Convert Time Between Time Zones</h2>
+        <form id="converterForm">
+          <div class="form-group">
+            <label for="dateTime">Enter Date & Time</label>
+            <input type="datetime-local" id="dateTime" required />
+          </div>
+          <div class="form-group">
+            <label for="fromTimeZone">From Time Zone</label>
+            <select id="fromTimeZone" required>
+              <!-- Add time zones dynamically or hardcode options -->
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">America/New_York</option>
+              <option value="Europe/London">Europe/London</option>
+              <option value="Asia/Tokyo">Asia/Tokyo</option>
+              <option value="Australia/Sydney">Australia/Sydney</option>
+              <!-- Add more time zones as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="toTimeZone">To Time Zone</label>
+            <select id="toTimeZone" required>
+              <!-- Same time zone options as above -->
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">America/New_York</option>
+              <option value="Europe/London">Europe/London</option>
+              <option value="Asia/Tokyo">Asia/Tokyo</option>
+              <option value="Australia/Sydney">Australia/Sydney</option>
+            </select>
+          </div>
+          <button type="submit" class="convert-button">Convert Time</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="converter-results">
+        <h2>Converted Time</h2>
+        <div class="results">
+          <p>
+            <strong>Converted Time:</strong> <span id="convertedTime">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>How It Works</h2>
+      <div class="formula-content">
+        <p>
+          The time zone conversion works by adjusting the provided date and time
+          from one time zone to another. It accounts for the difference in time
+          between the two selected zones.
+        </p>
+        <div class="formula">
+          Time in Target Zone = Time in Source Zone + Time Zone Offset
+          Difference
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Time Zone Converter -->
+    <script>
+      document
+        .getElementById("converterForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input date/time, source and target time zones
+          const dateTime = document.getElementById("dateTime").value;
+          const fromTimeZone = document.getElementById("fromTimeZone").value;
+          const toTimeZone = document.getElementById("toTimeZone").value;
+
+          // Create date object from the provided date/time
+          const date = new Date(dateTime);
+
+          // Use the Intl.DateTimeFormat object to handle time zone conversion
+          const options = {
+            timeZone: toTimeZone,
+            hour12: true,
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+          };
+
+          // Format the date in the target time zone
+          const convertedDate = new Intl.DateTimeFormat(
+            "en-US",
+            options
+          ).format(date);
+
+          // Display the converted time
+          document.getElementById("convertedTime").textContent = convertedDate;
+        });
+    </script>
+  </body>
+</html>

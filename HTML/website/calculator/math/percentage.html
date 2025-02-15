@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Percentage Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Container for Percentage Calculator */
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator-form h2,
+      .calculator-results h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Form Group */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Calculate Button */
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      /* Results Section */
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem;
+        text-align: center;
+        background-color: #1a252f;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #1abc9c;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Percentage Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Calculate Percentage</h2>
+        <form id="percentageForm">
+          <div class="form-group">
+            <label for="total">Total Value</label>
+            <input
+              type="number"
+              id="total"
+              required
+              placeholder="Enter total value"
+            />
+          </div>
+          <div class="form-group">
+            <label for="percent">Percentage (%)</label>
+            <input
+              type="number"
+              id="percent"
+              required
+              placeholder="Enter percentage"
+            />
+          </div>
+          <button type="submit" class="calculate-button">
+            Calculate Percentage
+          </button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Calculated Result</h2>
+        <div class="results">
+          <p><strong>Result:</strong> <span id="result">-</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>How It Works</h2>
+      <div class="formula-content">
+        <p>
+          To calculate a percentage, multiply the total value by the percentage
+          and divide by 100. The formula is:
+        </p>
+        <div class="formula">
+          <strong>Result = (Total Value × Percentage) ÷ 100</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Percentage Calculator -->
+    <script>
+      document
+        .getElementById("percentageForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input values
+          const total = parseFloat(document.getElementById("total").value);
+          const percent = parseFloat(document.getElementById("percent").value);
+
+          // Calculate percentage
+          const result = (total * percent) / 100;
+
+          // Display result
+          document.getElementById("result").textContent = result.toFixed(2);
+        });
+    </script>
+  </body>
+</html>

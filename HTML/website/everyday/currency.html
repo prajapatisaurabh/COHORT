@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Currency Converter Specific Styles */
+      .calculator-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://via.placeholder.com/1500");
+        background-size: cover;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      .formula sup {
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Currency Converter Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>Currency Converter</h1>
+        <p>
+          Convert between different currencies with real-time exchange rates.
+        </p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Enter Conversion Details</h2>
+        <form id="currencyForm">
+          <div class="form-group">
+            <label for="amount">Amount to Convert</label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exchangeRate">Exchange Rate</label>
+            <input
+              type="number"
+              id="exchangeRate"
+              placeholder="e.g., 0.85 (USD to EUR)"
+              step="0.0001"
+              required
+            />
+          </div>
+          <button type="submit" class="calculate-button">
+            Convert Currency
+          </button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Converted Amount</h2>
+        <div class="results">
+          <p>
+            <strong>Converted Amount:</strong>
+            <span id="convertedAmount">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>Currency Conversion Formula</h2>
+      <div class="formula-content">
+        <p>Currency conversion is calculated using the following formula:</p>
+        <div class="formula">
+          <strong>Converted Amount</strong> =
+          <strong>Amount in Base Currency</strong> ×
+          <strong>Exchange Rate</strong>
+        </div>
+        <p>Where:</p>
+        <ul>
+          <li>
+            <strong>Amount in Base Currency</strong> = The amount you want to
+            convert.
+          </li>
+          <li>
+            <strong>Exchange Rate</strong> = The rate at which one currency can
+            be converted into another.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Currency Converter -->
+    <script>
+      document
+        .getElementById("currencyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get input values
+          const amount = parseFloat(document.getElementById("amount").value);
+          const exchangeRate = parseFloat(
+            document.getElementById("exchangeRate").value
+          );
+
+          // Validate inputs
+          if (isNaN(amount) || amount <= 0) {
+            alert("Please enter a valid amount to convert");
+            return;
+          }
+          if (isNaN(exchangeRate) || exchangeRate <= 0) {
+            alert("Please enter a valid exchange rate");
+            return;
+          }
+
+          // Calculate converted amount
+          const convertedAmount = amount * exchangeRate;
+
+          // Display results
+          document.getElementById(
+            "convertedAmount"
+          ).textContent = `$${convertedAmount.toFixed(2)}`;
+        });
+    </script>
+  </body>
+</html>

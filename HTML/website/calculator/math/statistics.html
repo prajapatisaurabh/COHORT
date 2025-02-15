@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistics Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Statistics Calculator Container */
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .calculator-form h2,
+      .calculator-results h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Form Group */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      /* Calculate Button */
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      /* Results Section */
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 2rem;
+        text-align: center;
+        background-color: #1a252f;
+        color: #fff;
+      }
+
+      .footer-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #1abc9c;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Statistics Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Statistics Calculator</h2>
+        <form id="statsForm">
+          <div class="form-group">
+            <label for="numbers">Enter Numbers (comma separated)</label>
+            <input
+              type="text"
+              id="numbers"
+              placeholder="Enter numbers"
+              required
+            />
+          </div>
+
+          <button type="submit" class="calculate-button">Calculate</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Results</h2>
+        <div class="results">
+          <p><strong>Mean:</strong> <span id="meanResult">-</span></p>
+          <p><strong>Median:</strong> <span id="medianResult">-</span></p>
+          <p><strong>Mode:</strong> <span id="modeResult">-</span></p>
+          <p><strong>Variance:</strong> <span id="varianceResult">-</span></p>
+          <p>
+            <strong>Standard Deviation:</strong>
+            <span id="stdDevResult">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>How It Works</h2>
+      <div class="formula-content">
+        <p>
+          Based on the given set of numbers, the following formulas are used:
+        </p>
+        <div class="formula">
+          <strong>Mean</strong>
+          <p>Mean = (Sum of all numbers) / (Total number of numbers)</p>
+        </div>
+        <div class="formula">
+          <strong>Median</strong>
+          <p>
+            Median = Middle value when the numbers are arranged in ascending
+            order. If even, average of two middle values.
+          </p>
+        </div>
+        <div class="formula">
+          <strong>Mode</strong>
+          <p>Mode = The number that appears most frequently in the set.</p>
+        </div>
+        <div class="formula">
+          <strong>Variance</strong>
+          <p>
+            Variance = Sum of squared differences from the mean / (Number of
+            numbers)
+          </p>
+        </div>
+        <div class="formula">
+          <strong>Standard Deviation</strong>
+          <p>Standard Deviation = Square root of Variance</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Statistics Calculator -->
+    <script>
+      document
+        .getElementById("statsForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get the input numbers
+          const numbers = document
+            .getElementById("numbers")
+            .value.split(",")
+            .map(Number);
+
+          // Calculate mean
+          const mean =
+            numbers.reduce((acc, val) => acc + val, 0) / numbers.length;
+
+          // Calculate median
+          numbers.sort((a, b) => a - b);
+          const median =
+            numbers.length % 2 === 0
+              ? (numbers[numbers.length / 2 - 1] +
+                  numbers[numbers.length / 2]) /
+                2
+              : numbers[Math.floor(numbers.length / 2)];
+
+          // Calculate mode
+          const frequency = {};
+          numbers.forEach(
+            (num) => (frequency[num] = (frequency[num] || 0) + 1)
+          );
+          const mode = Object.keys(frequency).reduce((a, b) =>
+            frequency[a] > frequency[b] ? a : b
+          );
+
+          // Calculate variance
+          const variance =
+            numbers.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) /
+            numbers.length;
+
+          // Calculate standard deviation
+          const stdDev = Math.sqrt(variance);
+
+          // Display results
+          document.getElementById("meanResult").textContent = mean.toFixed(2);
+          document.getElementById("medianResult").textContent =
+            median.toFixed(2);
+          document.getElementById("modeResult").textContent = mode;
+          document.getElementById("varianceResult").textContent =
+            variance.toFixed(2);
+          document.getElementById("stdDevResult").textContent =
+            stdDev.toFixed(2);
+        });
+    </script>
+  </body>
+</html>

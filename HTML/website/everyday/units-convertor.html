@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit Converter Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Unit Converter Specific Styles */
+      .calculator-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://via.placeholder.com/1500");
+        background-size: cover;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .calculator-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 3rem;
+      }
+
+      .calculator-form,
+      .calculator-results {
+        flex: 1;
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #555;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .calculate-button {
+        background-color: #1abc9c;
+        color: #fff;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .calculate-button:hover {
+        background-color: #16a085;
+      }
+
+      .results {
+        font-size: 1.1rem;
+        color: #555;
+      }
+
+      .results strong {
+        color: #2c3e50;
+      }
+
+      /* Formula Section */
+      .formula-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border-radius: 10px;
+      }
+
+      .formula-section h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+
+      .formula-content {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .formula {
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #eee;
+        text-align: center;
+      }
+
+      .formula sup {
+        font-size: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Unit Converter Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>Unit Converter</h1>
+        <p>
+          Convert between various units like Length, Weight, and Volume easily.
+        </p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Form -->
+      <div class="calculator-form">
+        <h2>Enter Conversion Details</h2>
+        <form id="unitConverterForm">
+          <div class="form-group">
+            <label for="unitType">Select Unit Type</label>
+            <select id="unitType">
+              <option value="length">Length</option>
+              <option value="weight">Weight</option>
+              <option value="volume">Volume</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputValue">Value to Convert</label>
+            <input
+              type="number"
+              id="inputValue"
+              placeholder="Enter value"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="outputUnit">Select Unit to Convert To</label>
+            <select id="outputUnit">
+              <!-- Options will be updated dynamically -->
+            </select>
+          </div>
+          <button type="submit" class="calculate-button">Convert</button>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="calculator-results">
+        <h2>Converted Value</h2>
+        <div class="results">
+          <p>
+            <strong>Converted Value:</strong> <span id="convertedValue">-</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formula Explanation -->
+    <section class="formula-section">
+      <h2>Unit Conversion Formula</h2>
+      <div class="formula-content">
+        <p>The conversion is based on the following formula:</p>
+        <div class="formula">
+          <strong>Converted Value</strong> = <strong>Input Value</strong> ×
+          <strong>Conversion Factor</strong>
+        </div>
+        <p>Where:</p>
+        <ul>
+          <li><strong>Input Value</strong> = The value you want to convert.</li>
+          <li>
+            <strong>Conversion Factor</strong> = The factor based on the type of
+            conversion (e.g., meters to kilometers).
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Unit Converter -->
+    <script>
+      // Unit Conversion Data
+      const conversionData = {
+        length: {
+          meters: 1,
+          kilometers: 0.001,
+          miles: 0.000621371,
+          feet: 3.28084,
+        },
+        weight: {
+          kilograms: 1,
+          grams: 1000,
+          pounds: 2.20462,
+          ounces: 35.274,
+        },
+        volume: {
+          liters: 1,
+          milliliters: 1000,
+          gallons: 0.264172,
+          cups: 4.22675,
+        },
+      };
+
+      // Update the output units based on selected unit type
+      function updateOutputUnits() {
+        const unitType = document.getElementById("unitType").value;
+        const outputUnitSelect = document.getElementById("outputUnit");
+        outputUnitSelect.innerHTML = "";
+        const units = Object.keys(conversionData[unitType]);
+        units.forEach((unit) => {
+          const option = document.createElement("option");
+          option.value = unit;
+          option.textContent = unit.charAt(0).toUpperCase() + unit.slice(1);
+          outputUnitSelect.appendChild(option);
+        });
+      }
+
+      // Handle form submission for conversion
+      document
+        .getElementById("unitConverterForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const unitType = document.getElementById("unitType").value;
+          const inputValue = parseFloat(
+            document.getElementById("inputValue").value
+          );
+          const outputUnit = document.getElementById("outputUnit").value;
+
+          if (isNaN(inputValue)) {
+            alert("Please enter a valid number to convert");
+            return;
+          }
+
+          const conversionFactor = conversionData[unitType][outputUnit];
+          const convertedValue = inputValue * conversionFactor;
+
+          document.getElementById("convertedValue").textContent =
+            convertedValue.toFixed(2);
+        });
+
+      // Initialize on page load
+      updateOutputUnits();
+      document
+        .getElementById("unitType")
+        .addEventListener("change", updateOutputUnits);
+    </script>
+  </body>
+</html>

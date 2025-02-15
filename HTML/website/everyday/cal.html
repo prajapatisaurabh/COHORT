@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator - Online Calculator Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Simple Calculator Specific Styles */
+      .calculator-header {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://via.placeholder.com/1500");
+        background-size: cover;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+
+      .calculator-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 4rem 2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .calculator-screen {
+        width: 100%;
+        height: 80px;
+        background: #1e1e1e;
+        color: white;
+        text-align: right;
+        font-size: 2rem;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+      }
+
+      .calculator-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+
+      .button {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #555;
+      }
+
+      .button:active {
+        background-color: #777;
+      }
+
+      .button.operator {
+        background-color: #1abc9c;
+      }
+
+      .button.operator:hover {
+        background-color: #16a085;
+      }
+
+      .button.double {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Online Calculator Hub</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Simple Calculator Header -->
+    <header class="calculator-header">
+      <div class="header-content">
+        <h1>Simple Calculator</h1>
+        <p>Perform basic arithmetic operations with ease.</p>
+      </div>
+    </header>
+
+    <!-- Calculator Container -->
+    <section class="calculator-container">
+      <!-- Calculator Screen -->
+      <div class="calculator-screen" id="calculatorScreen">0</div>
+
+      <!-- Calculator Buttons -->
+      <div class="calculator-buttons">
+        <button class="button" id="clear">C</button>
+        <button class="button operator" id="divide">/</button>
+        <button class="button operator" id="multiply">*</button>
+        <button class="button operator" id="subtract">-</button>
+        <button class="button" id="seven">7</button>
+        <button class="button" id="eight">8</button>
+        <button class="button" id="nine">9</button>
+        <button class="button operator" id="add">+</button>
+        <button class="button" id="four">4</button>
+        <button class="button" id="five">5</button>
+        <button class="button" id="six">6</button>
+        <button class="button double" id="equal">=</button>
+        <button class="button" id="one">1</button>
+        <button class="button" id="two">2</button>
+        <button class="button" id="three">3</button>
+        <button class="button" id="zero">0</button>
+        <button class="button" id="decimal">.</button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Online Calculator Hub. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="privacy-terms.html">Privacy Policy</a></li>
+        <li><a href="privacy-terms.html">Terms of Use</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </footer>
+
+    <!-- JavaScript for Simple Calculator -->
+    <script>
+      let currentValue = "0"; // Keeps track of current display value
+      let operator = null; // Stores operator during operation
+      let firstValue = null; // Stores the first operand for calculation
+      let secondValue = null; // Stores the second operand for calculation
+
+      // Display value function
+      function updateDisplay(value) {
+        document.getElementById("calculatorScreen").textContent = value;
+      }
+
+      // Function to clear the screen
+      document.getElementById("clear").addEventListener("click", function () {
+        currentValue = "0";
+        firstValue = null;
+        secondValue = null;
+        operator = null;
+        updateDisplay(currentValue);
+      });
+
+      // Handle number buttons
+      function handleNumber(number) {
+        if (currentValue === "0") {
+          currentValue = number.toString();
+        } else {
+          currentValue += number.toString();
+        }
+        updateDisplay(currentValue);
+      }
+
+      // Handle operator buttons
+      function handleOperator(op) {
+        if (firstValue === null) {
+          firstValue = parseFloat(currentValue);
+        } else if (operator) {
+          secondValue = parseFloat(currentValue);
+          calculate();
+          firstValue = parseFloat(currentValue);
+        }
+        operator = op;
+        currentValue = "0";
+      }
+
+      // Perform calculation
+      function calculate() {
+        if (operator && firstValue !== null) {
+          secondValue = parseFloat(currentValue);
+          let result = 0;
+          switch (operator) {
+            case "+":
+              result = firstValue + secondValue;
+              break;
+            case "-":
+              result = firstValue - secondValue;
+              break;
+            case "*":
+              result = firstValue * secondValue;
+              break;
+            case "/":
+              result = firstValue / secondValue;
+              break;
+          }
+          currentValue = result.toString();
+          updateDisplay(currentValue);
+          operator = null;
+        }
+      }
+
+      // Event Listeners for Number Buttons
+      document
+        .getElementById("one")
+        .addEventListener("click", () => handleNumber(1));
+      document
+        .getElementById("two")
+        .addEventListener("click", () => handleNumber(2));
+      document
+        .getElementById("three")
+        .addEventListener("click", () => handleNumber(3));
+      document
+        .getElementById("four")
+        .addEventListener("click", () => handleNumber(4));
+      document
+        .getElementById("five")
+        .addEventListener("click", () => handleNumber(5));
+      document
+        .getElementById("six")
+        .addEventListener("click", () => handleNumber(6));
+      document
+        .getElementById("seven")
+        .addEventListener("click", () => handleNumber(7));
+      document
+        .getElementById("eight")
+        .addEventListener("click", () => handleNumber(8));
+      document
+        .getElementById("nine")
+        .addEventListener("click", () => handleNumber(9));
+      document
+        .getElementById("zero")
+        .addEventListener("click", () => handleNumber(0));
+
+      // Event Listeners for Operator Buttons
+      document
+        .getElementById("add")
+        .addEventListener("click", () => handleOperator("+"));
+      document
+        .getElementById("subtract")
+        .addEventListener("click", () => handleOperator("-"));
+      document
+        .getElementById("multiply")
+        .addEventListener("click", () => handleOperator("*"));
+      document
+        .getElementById("divide")
+        .addEventListener("click", () => handleOperator("/"));
+
+      // Equal Button to Calculate the Result
+      document.getElementById("equal").addEventListener("click", calculate);
+
+      // Decimal Point Button
+      document.getElementById("decimal").addEventListener("click", function () {
+        if (!currentValue.includes(".")) {
+          currentValue += ".";
+          updateDisplay(currentValue);
+        }
+      });
+    </script>
+  </body>
+</html>
