@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saurabh Prajapati - Portfolio</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: monospace;
+        margin: 0;
+        padding: 20px;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px solid white;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 100px auto 0;
+      }
+
+      .header {
+        text-align: center;
+        grid-column: 1 / -1;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        margin: 10px 0;
+        font-size: 50px;
+      }
+
+      h2 {
+        margin: 10px 0;
+        font-size: 30px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 20px;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .link:hover {
+        background-color: rgb(242, 255, 0);
+        padding: 7px;
+        border-radius: 15px;
+        color: rgb(0, 0, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://media.licdn.com/dms/image/v2/D4D03AQGyMpYrkIX4yQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686365778547?e=1745452800&v=beta&t=PslnwdTaV8I5ALQaK1WBDFb6lwDeNftUWbzVY0gt5eA"
+      alt="Profile Picture"
+      class="profile-img"
+    />
+
+    <div class="header">
+      <h1>Saurabh Prajapati</h1>
+      <p>saurabhprajapati120@gmail.com | +91 81402 42047</p>
+    </div>
+
+    <div class="container">
+      <!-- Left Column -->
+      <div class="left-column">
+        <div class="section">
+          <h2>EDUCATION</h2>
+          <ul>
+            <li>
+              <strong>Gujarat Technological University</strong><br />
+              B.E in Computer Science<br />
+              Grad. May 2021 | CGPA: 8.23
+            </li>
+
+            <li>
+              <strong>Prakash High School</strong><br />
+              PCM with Computer Science<br />
+              Grad. June 2017 | Cum. Per: 67
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>LINKS</h2>
+          <ul>
+            <li>
+              <a
+                href="https://github.com/prajapatisaurabh"
+                class="link"
+                target="_blank"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/saurabh-prajapati"
+                target="_blank"
+                class="link"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://youtube.com/thitashorts"
+                class="link"
+                >YouTube</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>SKILLS</h2>
+          <ul>
+            <li>Java • JavaScript</li>
+            <li>C# • SQL • CSS • HTML</li>
+            <li>MySQL • SpringBoot</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <div class="section">
+          <h2>EXPERIENCE</h2>
+          <ul>
+            <li>
+              <strong>IBM India Software Lab Maximo</strong><br />
+              Software Engineer | Apr 2024 - Present<br />
+              React | Graphite
+            </li>
+
+            <li>
+              <strong>Visilean India Pvt. Ltd.</strong><br />
+              Software Engineer | May 2023 - Present<br />
+              SpringBoot | ReactJs
+            </li>
+
+            <li>
+              <strong>Knovos India Pvt. Ltd.</strong><br />
+              Software Engineer | May 2021 – May 2023<br />
+              • Developed PDF processing tool (90% faster)<br />
+              • Implemented multithreading (50% speed boost)
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>PROJECTS</h2>
+          <ul>
+            <li>
+              <strong>Social Media Analytics</strong><br />
+              Java | SpringBoot | ReactJs<br />
+              Multi-platform data processing
+            </li>
+
+            <li>
+              <strong>ThitaInfo</strong><br />
+              Exam portal with live monitoring<br />
+              Live Link | GitHub
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Disable right-click
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+
+      // Disable Copy, Paste, Cut, and View Source
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.ctrlKey &&
+          (event.key === "v" ||
+            event.key === "c" ||
+            event.key === "x" ||
+            event.key === "u")
+        ) {
+          event.preventDefault();
+        }
+        if (
+          event.key === "F12" ||
+          (event.ctrlKey &&
+            event.shiftKey &&
+            (event.key === "I" || event.key === "J"))
+        ) {
+          event.preventDefault();
+        }
+      });
+
+      document.addEventListener("copy", (event) => event.preventDefault());
+      document.addEventListener("cut", (event) => event.preventDefault());
+      document.addEventListener("paste", (event) => event.preventDefault());
+    </script>
+  </body>
+</html>
