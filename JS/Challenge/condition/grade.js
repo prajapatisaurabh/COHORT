@@ -9,6 +9,6 @@ function calculateGrade(marks) {
   } else if (marks > 60 && marks < 69) {
     return "D";
   } else {
-    return "E";
+    return "F";
   }
 }
