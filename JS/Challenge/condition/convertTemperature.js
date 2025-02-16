@@ -3,8 +3,8 @@ function convertTemperature(value, scale) {
   // Convert temperature based on the scale ("C" to "F" or "F" to "C")
 
   if (scale === "C") {
-    return (9 / 5) * value + 32;
+    return `${(9 / 5) * value + 32}°F`;
   } else {
-    return (5 / 9) * (value - 32);
+    return `${(5 / 9) * (value - 32)}°C`;
   }
 }
