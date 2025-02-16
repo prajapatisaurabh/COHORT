@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo - App</title>
+  </head>
+  <body>
+    <h1>Todo App</h1>
+
+    <div class="container">
+      <div>
+        <input id="todo-input" type="text" placeholder="Enter your todo" />
+        <button id="todo-add">Add</button>
+        <button id="todo-ClearAll">Clear all todo</button>
+      </div>
+    </div>
+    <ul id="todo-list"></ul>
+    <script>
+      const todoAdd = document.getElementById("todo-add");
+      const todoInput = document.getElementById("todo-input");
+      const todoList = document.getElementById("todo-list");
+
+      todoAdd.addEventListener("click", () => {
+        const value = todoInput.value;
+
+        const li = document.createElement("li");
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "X";
+        li.innerText = value;
+
+        deleteButton.addEventListener("click", () => {
+          li.remove();
+        });
+
+        li.appendChild(deleteButton);
+        todoList.appendChild(li);
+        todoInput.value = "";
+      });
+
+      const deleteAll = document.getElementById("todo-ClearAll");
+      deleteAll.addEventListener("click", () => {
+        todoList.remove();
+      });
+    </script>
+  </body>
+</html>

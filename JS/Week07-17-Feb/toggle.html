@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="theme">Dark Mode</button>
+    <script>
+      function changeBackgroud(color) {
+        document.body.style.backgroundColor = color;
+      }
+
+      const themButton = document.getElementById("theme");
+      themButton.addEventListener("click", () => {
+        console.log(document.body.style.backgroundColor);
+        const currentColor = document.body.style.backgroundColor;
+        if (!currentColor || currentColor == "white") {
+          changeBackgroud("black");
+        } else {
+          changeBackgroud("white");
+        }
+      });
+    </script>
+  </body>
+</html>
