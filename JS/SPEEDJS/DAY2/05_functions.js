@@ -26,9 +26,24 @@ let config = function () {
   //   console.log("first");
 })();
 
-let person1 = {
+let person4 = {
+  name: "Ravi",
+  greet: function () {
+    // console.log(`Hello ${this.name}`);
+  },
+};
+
+// person1.greet.apply(person2);
+
+const person1 = {
   name: "Ravi",
   greet: function () {
     console.log(`Hello ${this.name}`);
   },
 };
+
+const person2 = {
+  name: "Shital",
+};
+
+person1.greet.call(person2);
