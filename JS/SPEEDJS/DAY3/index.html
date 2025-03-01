@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+  </head>
+  <body>
+    <ul id="items"></ul>
+  </body>
+  <script>
+    console.log("Hii");
+    const items = document.getElementById("items");
+    fetch("https://api.freeapi.app/api/v1/public/randomusers")
+      .then((response) => {
+        console.log("FullFiled State");
+        response.json().then((obj) => {
+          console.log(obj);
+          const data = obj.data.data;
+          data.forEach((user) => {
+            const li = document.createElement("li");
+            li.innerText = user.email;
+            items.append(li);
+          });
+        });
+      })
+      .catch((err) => {
+        console.log("Error while converting", err);
+      })
+      .finally(() => {
+        console.log("me to har bar run hounga");
+      });
+
+    console.log("Bye");
+  </script>
+</html>
