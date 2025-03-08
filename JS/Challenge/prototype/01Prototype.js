@@ -1,11 +1,16 @@
-function Employee(name, position, salary) {
-  // Initialize name, position, and salary properties
-  this.name = name;
-  this.position = position;
-  this.salary = salary;
+function Library() {
+  this.books = [];
 }
 
-Employee.prototype.applyBonus = function (percent) {
-  this.salary = this.salary + (this.salary * percent) / 100; // Just return new salary
-  return this.salary;
+Library.prototype.addBook = function (book) {
+  this.books.push(book);
+};
+
+Library.prototype.findBook = function (title) {
+  const result = this.books.find((b) => b === title);
+  if (result) {
+    return "Book found";
+  } else {
+    return "Book not found";
+  }
 };
