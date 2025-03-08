@@ -1,24 +1,11 @@
-// You need to implement the BankAccount constructor function and its prototype methods
-
-function BankAccount(balance) {
-  this.balance = 0;
-  this.transactions = [];
+function Employee(name, position, salary) {
+  // Initialize name, position, and salary properties
+  this.name = name;
+  this.position = position;
+  this.salary = salary;
 }
 
-BankAccount.prototype.deposit = function (amount) {
-  this.balance += amount;
-  this.transactions.push(`Deposited ${amount}`);
-};
-
-BankAccount.prototype.withdraw = function (amount) {
-  if (this.balance > amount) {
-    this.balance -= amount;
-    this.transactions.push(`Withdrew ${amount}`);
-  } else {
-    this.transactions.push("Insufficient balance");
-  }
-};
-
-BankAccount.prototype.getTransactionHistory = function () {
-  return this.transactions;
+Employee.prototype.applyBonus = function (percent) {
+  this.salary = this.salary + (this.salary * percent) / 100; // Just return new salary
+  return this.salary;
 };
