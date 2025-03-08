@@ -1,11 +1,9 @@
-function Counter() {
-  this.count = 0;
+function Playlist() {
+  this.songs = [];
 }
 
-Counter.prototype.increment = function () {
-  return ++this.count; // Fixed typo and returning updated value
+Playlist.prototype.addSong = function (song) {
+  this.songs.push(song);
 };
 
-Counter.prototype.decrement = function () {
-  return --this.count; // Returning updated value
-};
+// Define addSong method on Playlist's prototype
