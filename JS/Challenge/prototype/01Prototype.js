@@ -1,16 +1,11 @@
-// You need to implement the Robot constructor function and its prototype method
-
-function Robot(name, batteryLevel) {
-  this.name = name;
-  this.batteryLevel = batteryLevel;
+function Counter() {
+  this.count = 0;
 }
-Robot.prototype.charge = function () {
-  let internalBatLevel = this.batteryLevel;
-  internalBatLevel = internalBatLevel + 20;
 
-  if (this.internalBatLevel > 100) {
-    internalBatLevel = 100;
-    return internalBatLevel;
-  }
-  return internalBatLevel;
+Counter.prototype.increment = function () {
+  return ++this.count; // Fixed typo and returning updated value
+};
+
+Counter.prototype.decrement = function () {
+  return --this.count; // Returning updated value
 };
