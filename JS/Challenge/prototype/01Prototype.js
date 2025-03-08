@@ -1,16 +1,24 @@
-function Library() {
-  this.books = [];
+// You need to implement the BankAccount constructor function and its prototype methods
+
+function BankAccount(accountNumber, holderName, balance) {
+  // Initialize accountNumber, holderName, and balance properties
+  this.accountNumber = accountNumber;
+  this.holderName = holderName;
+  this.balance = balance;
 }
 
-Library.prototype.addBook = function (book) {
-  this.books.push(book);
+BankAccount.prototype.deposit = function (amount) {
+  this.balance += amount;
 };
 
-Library.prototype.findBook = function (title) {
-  const result = this.books.find((b) => b === title);
-  if (result) {
-    return "Book found";
-  } else {
-    return "Book not found";
+BankAccount.prototype.withdraw = function (amount) {
+  if (this.balance > amount) {
+    this.balance -= amount;
+  }
+};
+
+BankAccount.prototype.transfer = function (amount, targetAccount) {
+  if (this.balance > amount) {
+    
   }
 };
