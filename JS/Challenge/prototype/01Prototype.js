@@ -1,26 +1,16 @@
-#Shorts
-#YouTubeShorts
-#Viral
-#Trending
-#New
-#Explore
-#MustWatch
-#WatchNow
-#ForYou
-#TrendingNow
-#InstaReels
-#ViralVideo
-#DailyShorts
-#Entertainment
-#FYP
-#ShortsFeed
-#YouTubeShortsCreator
-#ShortVideoContent
-#ViralShorts
-#TrendingOnYouTube
-#NewShorts
-#ExploreShorts
-#MustWatchShorts
-#WatchNowShorts
-#ForYouPageShorts
-#TrendingShortsNow
+// You need to implement the Robot constructor function and its prototype method
+
+function Robot(name, batteryLevel) {
+  this.name = name;
+  this.batteryLevel = batteryLevel;
+}
+Robot.prototype.charge = function () {
+  let internalBatLevel = this.batteryLevel;
+  internalBatLevel = internalBatLevel + 20;
+
+  if (this.internalBatLevel > 100) {
+    internalBatLevel = 100;
+    return internalBatLevel;
+  }
+  return internalBatLevel;
+};
