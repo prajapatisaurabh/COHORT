@@ -1,9 +1,11 @@
-function Playlist() {
-  this.songs = [];
+function ShoppingCart() {
+  this.items = [];
 }
 
-Playlist.prototype.addSong = function (song) {
-  this.songs.push(song);
+ShoppingCart.prototype.addItem = function (item) {
+  this.items.push(item);
 };
 
-// Define addSong method on Playlist's prototype
+ShoppingCart.prototype.getTotalPrice = function () {
+  return this.items.reduce((a, b) => a + b);
+};
