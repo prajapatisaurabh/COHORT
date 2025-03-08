@@ -1,11 +1,24 @@
-function ShoppingCart() {
-  this.items = [];
+// You need to implement the BankAccount constructor function and its prototype methods
+
+function BankAccount(balance) {
+  this.balance = 0;
+  this.transactions = [];
 }
 
-ShoppingCart.prototype.addItem = function (item) {
-  this.items.push(item);
+BankAccount.prototype.deposit = function (amount) {
+  this.balance += amount;
+  this.transactions.push(`Deposited ${amount}`);
 };
 
-ShoppingCart.prototype.getTotalPrice = function () {
-  return this.items.reduce((a, b) => a + b);
+BankAccount.prototype.withdraw = function (amount) {
+  if (this.balance > amount) {
+    this.balance -= amount;
+    this.transactions.push(`Withdrew ${amount}`);
+  } else {
+    this.transactions.push("Insufficient balance");
+  }
+};
+
+BankAccount.prototype.getTransactionHistory = function () {
+  return this.transactions;
 };
