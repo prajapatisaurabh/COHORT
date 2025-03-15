@@ -120,7 +120,9 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
-    const token = jwt.sign({ id: user._id }, "shital", { expiresIn: "24h" });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECIRET, {
+      expiresIn: "24h",
+    });
     const cookieOptions = {
       httpOnly: true,
       secure: true,
@@ -141,4 +143,98 @@ const login = async (req, res) => {
   }
 };
 
-export { registerUser, verifyUser, login };
+const getMe = async (req, res) => {
+  try {
+    console.log("Reach at progile leavel" + req.user);
+
+    const user = User.findById(req.user.id).select("-password");
+
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    return res.status(201).json({
+      message: "User Information",
+      success: true,
+      user,
+    });
+  } catch (error) {
+    return res
+      .status(403)
+      .json({ message: "Error while fatching ", error: error });
+  }
+};
+
+const logoutUser = async (req, res) => {
+  try {
+    res.cookie("token", "", {
+      expires: new Date(0),
+    });
+
+    return res.status(201).json({
+      message: "User logout successfully",
+      success: true,
+    });
+  } catch (error) {
+    return res
+      .status(403)
+      .json({ message: "Error while fatching ", error: error });
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  try {
+    /**
+     * Get Email -- req.body
+     * Find user based on emial
+     * resetToken + resetExpiry set to database
+     * save database
+     * sendEmail -> set ResetPasswrod link
+     *
+     */
+  } catch (error) {
+    return res
+      .status(403)
+      .json({ message: "Error while fatching ", error: error });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  try {
+    /**
+     *  collect token from params + password.req.body
+     * validatation
+     * find user
+     */
+
+    const { token } = req.params;
+    const { password } = req.body;
+
+    try {
+      const user = User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() },
+      });
+
+      /**
+       * setPassword to user
+       * resetToken , setExpire set undefines
+       * save
+       */
+    } catch (error) {}
+  } catch (error) {
+    return res
+      .status(403)
+      .json({ message: "Error while fatching ", error: error });
+  }
+};
+
+export {
+  registerUser,
+  verifyUser,
+  login,
+  getMe,
+  logoutUser,
+  forgotPassword,
+  resetPassword,
+};
