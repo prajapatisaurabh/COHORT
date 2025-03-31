@@ -7,7 +7,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js"
   },
   "devDependencies": {
     "prettier": "^3.5.3"
@@ -17,8 +17,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mega-project": "file:",
-    "mongoose": "^8.13.1"
+    "mongoose": "^8.13.1",
+    "nodemon": "^3.1.9"
   }
 }
