@@ -4,8 +4,11 @@ import authRouter from "./routes/auth.routes.js";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import projectRouter from "./routes/project.routes.js";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
