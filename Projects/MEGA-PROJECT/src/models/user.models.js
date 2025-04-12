@@ -104,6 +104,10 @@ userSchema.methods.generateTemporaryToken = function () {
     .digest("hex");
 
   const tokenExpiry = Date.now() + 20 * 60 * 1000;
-  return hashedToken, hashedToken, tokenExpiry;
+  return {
+    hashedToken,
+    unHashedToken,
+    tokenExpiry,
+  };
 };
-export const user = mongoose.model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
