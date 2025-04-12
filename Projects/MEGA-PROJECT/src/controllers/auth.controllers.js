@@ -1,6 +1,7 @@
 import { User } from "../models/user.models.js";
 import { ApiResonse } from "../utilis/api-response.js";
 import { asyncHandler } from "../utilis/async-handler.js";
+import logger from "../utilis/logger.js";
 import { emailVerificationMailGenContent, sendMail } from "../utilis/mail.js";
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -101,9 +102,15 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const logoutUser = asyncHandler(async (req, res) => {
-  const { email, username, password, role } = req.body;
+  logger.info("request come to logout user");
+  res.cookie("token", "", { expires: new Date(0) });
 
-  //validation
+  return res.status(201).json(
+    new ApiResonse(201, {
+      message: "User logout successfully",
+      success: true,
+    }),
+  );
 });
 
 const verifyEmail = asyncHandler(async (req, res) => {
@@ -117,20 +124,15 @@ const verifyEmail = asyncHandler(async (req, res) => {
     );
   }
 
-  const user = await User.findOne({ emailVerificationToken: token });
+  const user = await User.findOne({
+    emailVerificationToken: token,
+    emailVerificationExpiry: { $gt: Date.now() },
+  });
 
   if (!user) {
     return res.status(400).json(
       new ApiResonse(400, {
-        message: "User not exits",
-      }),
-    );
-  }
-
-  if (user.emailVerificationExpiry < Date.now()) {
-    return res.status(400).json(
-      new ApiResonse(400, {
-        message: "Verifacation TIme is expired",
+        message: "User not exits or Verify user link is expire",
       }),
     );
   }
@@ -177,9 +179,21 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrentUser = asyncHandler(async (req, res) => {
-  const { email, username, password, role } = req.body;
+  const user = await User.findById(req.user._id).select("-password");
 
-  //validation
+  if (!user) {
+    return res.status(400).json(
+      new ApiResonse(400, {
+        message: "Invalid email or password",
+      }),
+    );
+  }
+
+  return res
+    .status(201)
+    .json(
+      new ApiResonse(201, { message: "User Information", success: true, user }),
+    );
 });
 
 export {
