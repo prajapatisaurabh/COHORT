@@ -11,7 +11,7 @@ export const isLoggedIn = async (req, res, next) => {
     if (!token) {
       res.status(400).json(
         new ApiResonse(400, {
-          message: "Authentication failed",
+          message: "Authentication failed Token not exits",
           success: false,
         }),
       );
@@ -25,10 +25,14 @@ export const isLoggedIn = async (req, res, next) => {
   } catch (error) {
     logger.error("Authentication failed in middleware no Token found");
     res.status(400).json(
-      new ApiResonse(400, {
-        message: "Authentication failed in middleware no Token found",
-        success: false,
-      }),
+      new ApiResonse(
+        400,
+        {
+          message: "Authentication failed in middleware no Token found",
+          success: false,
+        },
+        error.message,
+      ),
     );
   }
 

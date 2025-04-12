@@ -84,4 +84,11 @@ const userLoginValidator = () => {
   ];
 };
 
-export { userRegistrationValidator, userLoginValidator };
+const projectValidator = () => {
+  return [
+    body("name").trim().notEmpty().withMessage("name is required"),
+    body("description").notEmpty().withMessage("description is required"),
+  ];
+};
+
+export { userRegistrationValidator, userLoginValidator, projectValidator };
